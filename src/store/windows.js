@@ -9,6 +9,7 @@ export const useWindowsStore = create(
     openWindow: (windowKey, data = null) =>
       set((state) => {
         const win = state.windows[windowKey];
+        if (!win) return;
         win.isOpen = true;
         win.zIndex = state.nextZIndex;
         win.data = data ?? win.data;
@@ -17,6 +18,7 @@ export const useWindowsStore = create(
     closeWindow: (windowKey) =>
       set((state) => {
         const win = state.windows[windowKey];
+        if (!win) return;
         win.isOpen = false;
         win.zIndex = INITIAL_Z_INDEX;
         win.data = null;
@@ -24,6 +26,7 @@ export const useWindowsStore = create(
     focusWindow: (windowKey) =>
       set((state) => {
         const win = state.windows[windowKey];
+        if (!win) return;
         state.nextZIndex++;
       }),
   })),
