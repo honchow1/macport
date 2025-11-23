@@ -72,7 +72,7 @@ const Welcome = () => {
         {renderText(
           "Hello, I'm Hon! Welcone to my",
           "text-3xl font-georama",
-          100
+          100,
         )}
       </p>
       <h1 ref={titleRef} className="mt-7">
