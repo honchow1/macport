@@ -2,7 +2,7 @@ import { WINDOW_CONFIG, INITIAL_Z_INDEX } from "#constants";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-export const useWindowsStore = create(
+const useWindowsStore = create(
   immer((set) => ({
     windows: WINDOW_CONFIG,
     nextZIndex: INITIAL_Z_INDEX + 1,
@@ -29,5 +29,6 @@ export const useWindowsStore = create(
         if (!win) return;
         state.nextZIndex++;
       }),
-  })),
+  }))
 );
+export { useWindowsStore };
