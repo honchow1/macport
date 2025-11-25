@@ -3,32 +3,32 @@ import { navIcons, navLinks } from "#constants";
 import dayjs from "dayjs";
 
 const Navbar = () => {
-  const logo = "/images/logo.svg";
-  return (
-    <nav>
-      <div>
-        <img src={logo} alt="logo" />
-        <p className="font-bold">Hon's Portfolio</p>
-        <ul>
-          {navLinks.map(({ id, name }) => (
-            <li key={id}>
-              <a href={`#${name}`}>{name}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <ul>
-          {navIcons.map(({ id, img }) => (
-            <li key={id}>
-              <img src={img} className="icon-hover" alt={`icon-${id}`} />
-            </li>
-          ))}
-        </ul>
-        <time>{dayjs().format("ddd MMM D hh:mm A")}</time>
-      </div>
-    </nav>
-  );
+	const logo = "/images/logo.svg";
+	return (
+		<nav>
+			<div>
+				<img src={logo} alt="logo" />
+				<p className="font-bold">Hon's Portfolio</p>
+				<ul>
+					{navLinks.map(({ id, name }) => (
+						<li key={id}>
+							<a href={`#${name}`}>{name}</a>
+						</li>
+					))}
+				</ul>
+			</div>
+			<div>
+				<ul>
+					{navIcons.map(({ id, img }) => (
+						<li key={id}>
+							<img src={img} className="icon-hover" alt={`icon-${id}`} />
+						</li>
+					))}
+				</ul>
+				<time>{dayjs().format("ddd MMM D hh:mm A")}</time>
+			</div>
+		</nav>
+	);
 };
 
 export default Navbar;

@@ -1,9 +1,10 @@
-import { useRef } from "react";
-import gsap from "gsap";
-import { useWindowsStore } from "#store/window";
-import { useLayoutEffect } from "react";
-import { useGSAP } from "@gsap/react";
-import { Draggable } from "gsap/Draggable";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useWindowsStore } from '#store/window';
+import { useLayoutEffect } from 'react';
+import { useGSAP } from '@gsap/react';
+import { Draggable } from 'gsap/Draggable';
+
 const WindowWrapper = (Component, windowKey) => {
   const Wrapped = (props) => {
     const { focusWindow, windows } = useWindowsStore();
@@ -13,11 +14,11 @@ const WindowWrapper = (Component, windowKey) => {
     useGSAP(() => {
       const el = ref.current;
       if (!el || !isOpen) return;
-      el.style.display = "block";
+      el.style.display = 'block';
       gsap.fromTo(
         el,
         { scale: 0.8, opacity: 0, y: 40 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
+        { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
       );
     }, [isOpen]);
 
@@ -25,7 +26,7 @@ const WindowWrapper = (Component, windowKey) => {
       const el = ref.current;
       if (!el) return;
       const [instance] = Draggable.create(el, {
-        onPress: () => focusWindow(windowKey),
+        onPress: () => focusWindow(windowKey)
       });
       return () => instance.kill();
     }, []);
@@ -33,7 +34,7 @@ const WindowWrapper = (Component, windowKey) => {
     useLayoutEffect(() => {
       const el = ref.current;
       if (!el) return;
-      el.style.display = isOpen ? "block" : "none";
+      el.style.display = isOpen ? 'block' : 'none';
     }, [isOpen]);
 
     return (
@@ -42,7 +43,7 @@ const WindowWrapper = (Component, windowKey) => {
       </section>
     );
   };
-  Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || "Component"})`;
+  Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || 'Component'})`;
   return Wrapped;
 };
 

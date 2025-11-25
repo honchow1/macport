@@ -1,18 +1,19 @@
 import { Navbar, Welcome, Dock } from "#components";
-import { Terminal } from "#windows";
+import { Terminal, Safari } from "#windows";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 
 gsap.registerPlugin(Draggable);
 export const App = () => {
-  return (
-    <main>
-      <Navbar />
-      <Welcome />
-      <Dock />
-      <Terminal />
-    </main>
-  );
+	return (
+		<main>
+			<Navbar />
+			<Welcome />
+			<Dock />
+			<Terminal />
+			<Safari />
+		</main>
+	);
 };
 
 export default App;

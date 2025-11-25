@@ -1,10 +1,11 @@
-import React from "react";
-import { useRef } from "react";
-import { dockApps } from "#constants";
-import { Tooltip } from "react-tooltip";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { useWindowsStore } from "#store/window";
+import React from 'react';
+import { useRef } from 'react';
+import { dockApps } from '#constants';
+import { Tooltip } from 'react-tooltip';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useWindowsStore } from '#store/window';
+
 const Dock = () => {
   const { openWindow, closeWindow, windows } = useWindowsStore();
   const dockRef = useRef(null);
@@ -13,7 +14,7 @@ const Dock = () => {
     const dock = dockRef.current;
     if (!dock) return;
 
-    const icons = dock.querySelectorAll(".dock-icon");
+    const icons = dock.querySelectorAll('.dock-icon');
 
     const animateIcons = (mouseX) => {
       const { left } = dock.getBoundingClientRect();
@@ -28,7 +29,7 @@ const Dock = () => {
           scale: 1 + 0.25 * intensity,
           y: -15 * intensity,
           duration: 0.2,
-          ease: "power1.out",
+          ease: 'power1.out'
         });
       });
     };
@@ -42,15 +43,15 @@ const Dock = () => {
           scale: 1,
           y: 0,
           duration: 0.3,
-          ease: "power1.out",
+          ease: 'power1.out'
         });
       });
     };
-    dock.addEventListener("mousemove", handleMouseMove);
-    dock.addEventListener("mouseleave", resetIcons);
+    dock.addEventListener('mousemove', handleMouseMove);
+    dock.addEventListener('mouseleave', resetIcons);
     return () => {
-      dock.removeEventListener("mousemove", handleMouseMove);
-      dock.removeEventListener("mouseleave", resetIcons);
+      dock.removeEventListener('mousemove', handleMouseMove);
+      dock.removeEventListener('mouseleave', resetIcons);
     };
   }, []);
   const toggleApp = (app) => {
@@ -78,13 +79,12 @@ const Dock = () => {
               data-tooltip-content={name}
               data-tooltip-delay-show={150}
               disabled={!canOpen}
-              onClick={() => toggleApp({ id, canOpen })}
-            >
+              onClick={() => toggleApp({ id, canOpen })}>
               <img
                 src={`/images/${icon}`}
                 alt={name}
                 loading="lazy"
-                className={canOpen ? "" : "opacity-60"}
+                className={canOpen ? '' : 'opacity-60'}
               />
             </button>
           </div>
